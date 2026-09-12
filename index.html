@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +10,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Royal Jewels</title>
   <style>
+    /* MARK: CSS */
     * {
       box-sizing: border-box;
       /* border: 1px solid red; */
@@ -18,26 +18,37 @@
     }
     .card {
       background-color: rgba(255, 252, 178, 0.1);
-  border-radius: 12px;
-  transform: translateY(0);
-  box-shadow: 0 4px 6px -1px rgb(0, 0, 0);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(0.5);
-  box-shadow: 0 10px 20px -5px blue,
-              0 0 15px 0 gold;
-}
-.carousel-control-next-icon,
-.carousel-control-prev-icon {
-  filter: invert(1);
-}
+      border-radius: 12px;
+      transform: translateY(0);
+      box-shadow: 0 4px 6px -1px rgb(0, 0, 0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(0.5);
+      box-shadow: 0 10px 20px -5px blue,
+        0 0 15px 0 gold;
+    }
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+      filter: invert(1);
+    }
+    .scrollTopBTN {
+      position: fixed;
+      z-index: 5;
+      font-size: x-large;
+      border-radius: 30%;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+    }
+    /* #calculator {
+      border: 1px solid black;
+    } */
   </style>
 </head>
-
+<!-- MARK: Body -->
 <body>
-  <!-- navbar start -->
+  <!-- MARK: Navbar start -->
   <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary bg-dark" data-bs-theme="dark">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">Royal Jewels</a>
@@ -57,18 +68,18 @@
       </div>
     </div>
   </nav>
-  <!-- navbar end -->
-  <!-- Hero start -->
+  <!-- MARK: navbar end -->
+  <!-- MARK: Hero start -->
   <div class="container my-5">
     <div class="row text-center">
       <h1>Timeless Jewellery for Every Occasion</h1>
       <p>Royal Jewels offers premium gold, diamond and silver jewellery crafted with perfection, purity and trust.</p>
     </div>
   </div>
-  <!-- Hero end -->
-  <!-- card line 1 start -->
+  <!-- MARK: Hero end -->
+  <!-- MARK: card line 1 start -->
   <div class="container my-5">
-    <!-- large display start -->
+    <!-- MARK: large display start -->
     <div class="row d-none d-md-flex">
       <div class="col">
         <div class="card h-100  card1">
@@ -103,8 +114,8 @@
         </div>
       </div>
     </div>
-    <!-- large display end -->
-    <!-- carousel start -->
+    <!-- MARK: large display end -->
+    <!-- MARK: carousel start -->
     <div id="carousel1" class="carousel slide d-md-none" data-bs-ride="carousel">
       <div class="carousel-inner py-5">
         <div class="carousel-item active">
@@ -150,12 +161,12 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <!-- carousel end -->
+    <!-- MARK: carousel end -->
   </div>
-  <!-- card line 1 end -->
-  <!-- card line 2 start -->
+  <!-- MARK: card line 1 end -->
+  <!-- MARK: card line 2 start -->
   <div class="container my-5">
-    <!-- large display start -->
+    <!-- MARK: large display start -->
     <div class="row d-none d-md-flex">
       <div class="col">
         <div class="card h-100 ">
@@ -196,8 +207,8 @@
         </div>
       </div>
     </div>
-    <!-- large display end -->
-    <!-- carousel start -->
+    <!--  large display end -->
+    <!-- MARK: carousel start -->
     <div id="carousel2" class="carousel slide d-md-none" data-bs-ride="carousel">
       <div class="carousel-inner py-5">
         <div class="carousel-item active">
@@ -249,17 +260,17 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <!-- carousel end -->
+    <!--carousel end -->
   </div>
   <!-- card line 2 end -->
-  <!-- feature section start -->
+  <!-- MARK: feature section start -->
   <div class="container bg-body-tertiary py-5 my-5 ">
     <div class="row">
       <h2>Why Millions Choose Royal Jewels</h2>
       <p>For more than two decades, Royal Jewels has earned the trust of millions of customers through purity,
         transparency and excellence.</p>
     </div>
-    <!-- large display start -->
+    <!-- MARK: large display start -->
     <div class="row d-none d-md-flex">
       <div class="col">
         <div class="card h-100 ">
@@ -302,8 +313,8 @@
         </div>
       </div>
     </div>
-    <!-- large display end -->
-    <!-- carousel start -->
+    <!-- MARK: large display end -->
+    <!-- MARK: carousel start -->
     <div id="carousel3" class="carousel slide d-md-none" data-bs-ride="carousel">
       <div class="carousel-inner py-5">
         <div class="carousel-item active">
@@ -312,7 +323,7 @@
             <div class="card-body">
               <h5 class="card-title">Certified Purity</h5>
               <p class="card-text small">All gold jewelery is BIS Halmarked and diamonds are IGI/GIA certified, ensuring
-              complete purity and authenticity.</p>
+                complete purity and authenticity.</p>
             </div>
           </div>
         </div>
@@ -321,8 +332,9 @@
             <img src="./price.jpg" class="card-img-top" alt="Transparent Pricing">
             <div class="card-body">
               <h5 class="card-title">Transparent Pricing</h5>
-              <p class="card-text small">Clear pricing with full cost-breakup including gold rate, making charges and taxes. No
-              hidden costs.
+              <p class="card-text small">Clear pricing with full cost-breakup including gold rate, making charges and
+                taxes. No
+                hidden costs.
               </p>
             </div>
           </div>
@@ -332,8 +344,9 @@
             <img src="./trust.jpg" class="card-img-top" alt="Expert Craftsmanship">
             <div class="card-body">
               <h5 class="card-title">Expert Craftsmanship</h5>
-              <p class="card-text small">Every jewellery piece is crafted by skilled artisans with years of experience in
-              traditional and modern designs</p>
+              <p class="card-text small">Every jewellery piece is crafted by skilled artisans with years of experience
+                in
+                traditional and modern designs</p>
             </div>
           </div>
         </div>
@@ -342,8 +355,9 @@
             <img src="./lifetime.png" class="card-img-top" alt="Lifetime Support">
             <div class="card-body">
               <h5 class="card-title">Lifetime Support</h5>
-              <p class="card-text small">Enjoy lifetime exchange, buyback and after-sales support on all jewellery purchases
-              from Royal Jewels.</p>
+              <p class="card-text small">Enjoy lifetime exchange, buyback and after-sales support on all jewellery
+                purchases
+                from Royal Jewels.</p>
             </div>
           </div>
         </div>
@@ -357,10 +371,10 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <!-- carousel end -->
+    <!-- MARK: carousel end -->
   </div>
-  <!-- feature section end -->
-  <!-- content section start -->
+  <!-- MARK: feature section end -->
+  <!-- MARK: content section start -->
   <div class="container my-5">
     <div class="row text-center">
       <h2>Jewellery Buying Guide </h2>
@@ -380,8 +394,72 @@
       </p>
     </div>
   </div>
-  <!-- content section end -->
-  <!-- footer start -->
+  <!--  content section end -->
+  <!-- MARK: Calculator -->
+  <div class="container my-5">
+    <div class="row text-center">
+      <h3>Price Calculator</h3>
+    </div>
+    <form id="calculator">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div class="form-floating mb-3">
+            <select name="metal" class="form-select" id="metal">
+              <option value="" disabled selected hidden>Select</option>
+              <option value="gold">Gold</option>
+              <option value="silver">Silver</option>
+              <option value="plat">Platinum</option>
+            </select>
+            <label for="metal">Metal</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating mb-3">
+            <select name="purity" class="form-select" id="purity">
+              <option value="" disabled selected hidden>Select</option>
+              <option data-category="gold" value=".999" hidden>24K</option>
+              <option data-category="gold" value=".916" hidden>22K</option>
+              <option data-category="gold" value=".75" hidden>18K</option>
+              <option data-category="silver" value=".999" hidden>Fine Silver</option>
+              <option data-category="silver" value=".925" hidden>Sterling Silver</option>
+              <option data-category="silver" value=".800" hidden>Coin Silver</option>
+              <option data-category="plat" value=".999" hidden>PT999</option>
+              <option data-category="plat" value=".900" hidden>PT900</option>
+              <option data-category="plat" value=".850" hidden>PT850</option>
+            </select>
+            <label for="purity">Purity</label>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" name="weight" id="weight" placeholder="grams">
+            <label for="weight"> Weight</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="price" id="price" placeholder="" disabled>
+            <label for="price"> Latest rate</label>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center justify-content-center">
+        <div class="col-md-4 mb-3">
+          <label for="calcOutput">Price</label>
+          <output id="calcOutput">$0</output>
+        </div>
+      </div>
+      <div class="row text-center justify-content-center">
+        <div class="col mb-3">
+          <button class="btn btn-warning" id="calcBTN">Calculate</button>
+        </div>
+      </div>
+  </div>
+  </form>
+  </div>
+  <!-- MARK: footer start -->
   <footer class="bg-dark text-white pt-5">
     <div class="container">
       <div class="row text-center">
@@ -422,11 +500,65 @@
       </p>
     </div>
   </footer>
-  <!-- footer end -->
-  <!-- Javascript -->
+  <!-- MARK: footer end -->
+  <button class="scrollTopBTN" id="scrollTopBTN">
+    <i class="fa-solid fa-arrow-up "></i>
+  </button>
+  <!-- MARK: Javascript -->
   <script>
-
+    // MARK: JS
+    // scroll button
+    let scroll = document.querySelector('#scrollTopBTN');
+    window.addEventListener('scroll', function scrl() {
+      if (window.scrollY > 300) {
+        scroll.style.display = "block";
+      }
+      else {
+        scroll.style.display = "none";
+      }
+    });
+    scroll.addEventListener('click', function top() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+    // calculator
+    document.querySelector("#calculator").addEventListener('submit', function(event) {
+    event.preventDefault();
+  });
+    let metalSelect = document.querySelector("#metal")
+    let puritySelect = document.querySelector("#purity")
+    let purityOptions = puritySelect.querySelectorAll('option');
+    metalSelect.addEventListener('change', function () {
+      let selectedValue = this.value
+      puritySelect.value = "";
+      purityOptions.forEach(option => {
+        let optionCategory = option.getAttribute("data-category");
+        if (optionCategory === selectedValue) {
+          option.hidden = false;  // Unhide the option
+        } else {
+          option.hidden = true;   // Hide the option
+        }
+      })
+    });
+    let currentRate = {
+      silver: 80,
+      gold: 280,
+      plat: 470
+    }
+    puritySelect.addEventListener("change", function () {
+      let selectedValue = this.value
+      let rate = currentRate[metalSelect.value]
+      document.querySelector("#price").value = Math.round(rate * selectedValue);
+    });
+    let calculate = document.querySelector("#calcBTN");
+    calculate.addEventListener("click", function () {
+      let rate = currentRate[metalSelect.value]
+      let wt = document.querySelector("#weight").value
+      let p = puritySelect.value;
+      document.querySelector("#calcOutput").innerHTML = " $" + rate * wt * p;
+    })
   </script>
 </body>
-
 </html>
