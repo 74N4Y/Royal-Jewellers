@@ -11,7 +11,7 @@
   <title>Royal Jewels</title>
   <style>
     /* MARK: CSS */
-    * {
+    *, #previousBTN,#nextBTN {
       box-sizing: border-box;
       /* border: 1px solid red; */
       /* background-color: rgb(255, 0, 0, 0.1); */
@@ -44,6 +44,12 @@
     /* #calculator {
       border: 1px solid black;
     } */
+    /* huides number arrows in input box */
+    #weight::-webkit-outer-spin-button,
+    #weight::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    /* testimonials */
   </style>
 </head>
 <!-- MARK: Body -->
@@ -396,7 +402,7 @@
   </div>
   <!--  content section end -->
   <!-- MARK: Calculator -->
-  <div class="container my-5">
+  <div class="container bg-body-tertiary py-4 my-5 ">
     <div class="row text-center">
       <h3>Price Calculator</h3>
     </div>
@@ -428,14 +434,18 @@
               <option data-category="plat" value=".850" hidden>PT850</option>
             </select>
             <label for="purity">Purity</label>
+            <span id=""></span>
           </div>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-md-4">
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" name="weight" id="weight" placeholder="grams">
-            <label for="weight"> Weight</label>
+          <div class="input-group mb-3">
+            <div class="form-floating">
+              <input type="number" class="form-control" name="weight" id="weight" placeholder="grams">
+              <label for="weight"> Weight</label>
+            </div>
+            <span class="input-group-text">grams</span>
           </div>
         </div>
         <div class="col-md-4">
@@ -459,6 +469,29 @@
   </div>
   </form>
   </div>
+  <!-- calculator end -->
+  <!-- MARK: testimonials start -->
+  <div class="container my-5 text-center">
+    <div class="row">
+      <div class="col">
+        <h3>What people say about us</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 col-md-1 align-self-center">
+        <button class="btn " id="previousBTN">
+          &lt; </button>
+      </div>
+      <div class="col">
+        <div class="testimonialBox"></div>
+      </div>
+      <div class="col-2 col-md-1 align-self-center">
+        <button class="btn" id="nextBTN">&gt;</button>
+      </div>
+      <!-- <div class="dotBox"></div> -->
+    </div>
+  </div>
+  <!-- end testimonials -->
   <!-- MARK: footer start -->
   <footer class="bg-dark text-white pt-5">
     <div class="container">
@@ -524,13 +557,16 @@
       });
     });
     // calculator
-    document.querySelector("#calculator").addEventListener('submit', function(event) {
-    event.preventDefault();
-  });
+    // prevent form submission
+    document.querySelector("#calculator").addEventListener('submit', function (event) {
+      event.preventDefault();
+    });
+    // nested drowdown
     let metalSelect = document.querySelector("#metal")
     let puritySelect = document.querySelector("#purity")
     let purityOptions = puritySelect.querySelectorAll('option');
     metalSelect.addEventListener('change', function () {
+      metalSelect.classList.remove("is-invalid");
       let selectedValue = this.value
       puritySelect.value = "";
       purityOptions.forEach(option => {
@@ -542,22 +578,97 @@
         }
       })
     });
+    // latest price
     let currentRate = {
       silver: 80,
       gold: 280,
       plat: 470
     }
     puritySelect.addEventListener("change", function () {
+      puritySelect.classList.remove("is-invalid");
       let selectedValue = this.value
       let rate = currentRate[metalSelect.value]
       document.querySelector("#price").value = Math.round(rate * selectedValue);
     });
+    let weightInp = document.querySelector("#weight")
+    weightInp.addEventListener("input", function () {
+      weightInp.classList.remove("is-invalid");
+    })
+    // error check & calculate
     let calculate = document.querySelector("#calcBTN");
     calculate.addEventListener("click", function () {
-      let rate = currentRate[metalSelect.value]
-      let wt = document.querySelector("#weight").value
-      let p = puritySelect.value;
-      document.querySelector("#calcOutput").innerHTML = " $" + rate * wt * p;
+      if (metalSelect.value == "") {
+        metalSelect.classList.add("is-invalid");
+        return;
+      } else if (puritySelect.value == "") {
+        puritySelect.classList.add("is-invalid");
+        return;
+      }
+      else if (weightInp.value == "" || weightInp.value < 0) {
+        weightInp.classList.add("is-invalid");
+        return;
+      }
+      else {
+        let rate = currentRate[metalSelect.value]
+        let wt = document.querySelector("#weight").value
+        let p = puritySelect.value;
+        document.querySelector("#calcOutput").innerHTML = " $" + rate * wt * p;
+      }
+    })
+    // testimonials
+    let testimonial = [
+      {
+        name: "abc",
+        text: "lorem ipsumlorem ipsummlorem ipsumlorem ipsumlorem ipsum.",
+        rating: 1
+      },
+      {
+        name: "def",
+        text: "dolor sitdolor sitdolor sitdolor sitdolor sitdolor sit.",
+        rating: 2
+      },
+      {
+        name: "er3",
+        text: "ametame tametamet ametametameta meta met ame t.",
+        rating: 3
+      },
+      {
+        name: "klf",
+        text: "lorem ipsum dolor sit amet.",
+        rating: 4
+      },
+      {
+        name: "dw2",
+        text: "lorem ipsum dolor sit amet.",
+        rating: 5
+      }
+    ]
+    let ttBox = document.querySelector(".testimonialBox")
+    let testimonialIndex = 0
+    printTestimonials(testimonialIndex)
+    function printTestimonials(index) {
+      let tmnl = testimonial[index];
+      ttBox.innerHTML = `<h5>${tmnl.name}</h5>` + `<p>${tmnl.text}</p>` + `<p>${tmnl.rating}/5</p>`
+    }
+    // previous btn
+    document.querySelector("#previousBTN").addEventListener("click", function () {
+      console.log(testimonialIndex)
+      if (testimonialIndex > 0) {
+        --testimonialIndex
+      } else {
+        testimonialIndex = testimonial.length - 1
+      }
+      printTestimonials(testimonialIndex);
+    })
+    // next btn
+    document.querySelector("#nextBTN").addEventListener("click", function () {
+      console.log(testimonialIndex)
+      if (testimonialIndex < testimonial.length - 1) {
+        ++testimonialIndex
+      } else {
+        testimonialIndex = 0
+      }
+      printTestimonials(testimonialIndex);
     })
   </script>
 </body>
