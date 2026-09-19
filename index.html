@@ -8,22 +8,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.css"
     integrity="sha512-NhLySQDkiKSKnT+R795uaHWRQ7D3VuIvgeOLCK8cWq4w5fq4sWF90gj8eURpTqn/f1mFzqClpOz8JPlgVTLfFw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- bs 4.1 -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <!-- bs 4.1 -->
   <title>Royal Jewels</title>
   <style>
     /* MARK: CSS */
-    *, #previousBTN,#nextBTN {
+    * {
       box-sizing: border-box;
       /* border: 1px solid red; */
       /* background-color: rgb(255, 0, 0, 0.1); */
     }
-    .card {
+     .card-1 {
       background-color: rgba(255, 252, 178, 0.1);
       border-radius: 12px;
       transform: translateY(0);
       box-shadow: 0 4px 6px -1px rgb(0, 0, 0);
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
-    .card:hover {
+    .card-1:hover {
       transform: translateY(0.5);
       box-shadow: 0 10px 20px -5px blue,
         0 0 15px 0 gold;
@@ -43,13 +54,52 @@
     }
     /* #calculator {
       border: 1px solid black;
-    } */
-    /* huides number arrows in input box */
-    #weight::-webkit-outer-spin-button,
-    #weight::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-    }
+      } */
+      /* huides number arrows in input box */
+      #weight::-webkit-outer-spin-button,
+      #weight::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
     /* testimonials */
+      .test {
+        position: relative;
+      width: 18rem;
+      margin: 0 auto;
+    }
+    #previousBTN {
+      /* left: 0; */
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      transform: translateY(-50%);
+    }
+    #nextBTN {
+      /* right: 0; */
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      transform: translateY(-50%);
+    }
+    @media (max-width: 767px) {
+      #previousBTN {
+        left: -35px;
+      }
+      #nextBTN {
+        right: -35px;
+      }
+    }
+    @media (min-width: 768px) {
+      #previousBTN {
+        left: -100px;
+      }
+      #nextBTN {
+        /* border: 1px solid gray; */
+        right: -100px;
+      }
+    }
+    /* .card-2 {
+      background-color: aqua;
+    } */
   </style>
 </head>
 <!-- MARK: Body -->
@@ -88,7 +138,7 @@
     <!-- MARK: large display start -->
     <div class="row d-none d-md-flex">
       <div class="col">
-        <div class="card h-100  card1">
+        <div class="card card-1 h-100  card1">
           <img src="./gold.jpg" class="card-img-top h-100" alt="...">
           <div class="card-body">
             <h5 class="card-title">Gold Jewellery</h5>
@@ -99,7 +149,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card h-100  card1">
+        <div class="card card-1 h-100  card1">
           <img src="./diamond.jpg" class="card-img-top h-100" alt="...">
           <div class="card-body">
             <h5 class="card-title">Diamond Jewellery</h5>
@@ -109,7 +159,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card h-100  card1">
+        <div class="card card-1 h-100  card1">
           <img src="./silver.jpg" class="card-img-top h-100" alt="...">
           <div class="card-body">
             <h5 class="card-title">Silver Jewellery</h5>
@@ -125,7 +175,7 @@
     <div id="carousel1" class="carousel slide d-md-none" data-bs-ride="carousel">
       <div class="carousel-inner py-5">
         <div class="carousel-item active">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1 mx-auto text-center " style="max-width: 320px;">
             <img src="./gold.jpg" class="card-img-top" alt="Gold Jewellery">
             <div class="card-body">
               <h5 class="card-title">Gold Jewellery</h5>
@@ -136,7 +186,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1 mx-auto text-center " style="max-width: 320px;">
             <img src="./diamond.jpg" class="card-img-top" alt="Gold Jewellery">
             <div class="card-body">
               <h5 class="card-title">Diamond Jewellery</h5>
@@ -147,7 +197,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1 mx-auto text-center " style="max-width: 320px;">
             <img src="./silver.jpg" class="card-img-top" alt="Gold Jewellery">
             <div class="card-body">
               <h5 class="card-title">Silver Jewellery</h5>
@@ -175,7 +225,7 @@
     <!-- MARK: large display start -->
     <div class="row d-none d-md-flex">
       <div class="col">
-        <div class="card h-100 ">
+        <div class="card card-1  h-100 ">
           <img src="./bridal.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Bridal Jewellery</h5>
@@ -185,7 +235,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 ">
+        <div class="card card-1  h-100 ">
           <img src="./daily.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Daily Wear Jewellery</h5>
@@ -194,7 +244,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 ">
+        <div class="card card-1  h-100 ">
           <img src="./luxury.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Luxury Diamond Sets</h5>
@@ -204,7 +254,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 ">
+        <div class="card card-1  h-100 ">
           <img src="./fesitve.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Festive Collections</h5>
@@ -218,7 +268,7 @@
     <div id="carousel2" class="carousel slide d-md-none" data-bs-ride="carousel">
       <div class="carousel-inner py-5">
         <div class="carousel-item active">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1  mx-auto text-center " style="max-width: 320px;">
             <img src="./bridal.jpg" class="card-img-top" alt="Bridal Jewellery">
             <div class="card-body">
               <h5 class="card-title">Bridal Jewellery</h5>
@@ -228,7 +278,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1  mx-auto text-center " style="max-width: 320px;">
             <img src="./daily.jpg" class="card-img-top" alt="Daily Wear Jewellery">
             <div class="card-body">
               <h5 class="card-title">Daily Wear Jewellery</h5>
@@ -238,7 +288,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1  mx-auto text-center " style="max-width: 320px;">
             <img src="./luxury.jpg" class="card-img-top" alt="Luxury Diamond Sets">
             <div class="card-body">
               <h5 class="card-title">Luxury Diamond Sets</h5>
@@ -248,7 +298,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1  mx-auto text-center " style="max-width: 320px;">
             <img src="./fesitve.jpg" class="card-img-top" alt="Festive Collections">
             <div class="card-body">
               <h5 class="card-title">Festive Collections</h5>
@@ -279,7 +329,7 @@
     <!-- MARK: large display start -->
     <div class="row d-none d-md-flex">
       <div class="col">
-        <div class="card h-100 ">
+        <div class="card card-1  h-100 ">
           <img src="./auth.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Certified Purity</h5>
@@ -289,7 +339,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 ">
+        <div class="card card-1  h-100 ">
           <img src="./trust.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Expert Craftsmanship</h5>
@@ -299,7 +349,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 ">
+        <div class="card card-1  h-100 ">
           <img src="./price.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Transparent Pricing</h5>
@@ -309,7 +359,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 ">
+        <div class="card card-1  h-100 ">
           <img src="./lifetime.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Lifetime Support</h5>
@@ -324,7 +374,7 @@
     <div id="carousel3" class="carousel slide d-md-none" data-bs-ride="carousel">
       <div class="carousel-inner py-5">
         <div class="carousel-item active">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1  mx-auto text-center " style="max-width: 320px;">
             <img src="./auth.png" class="card-img-top" alt="Certified Purity">
             <div class="card-body">
               <h5 class="card-title">Certified Purity</h5>
@@ -334,7 +384,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1  mx-auto text-center " style="max-width: 320px;">
             <img src="./price.jpg" class="card-img-top" alt="Transparent Pricing">
             <div class="card-body">
               <h5 class="card-title">Transparent Pricing</h5>
@@ -346,7 +396,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1  mx-auto text-center " style="max-width: 320px;">
             <img src="./trust.jpg" class="card-img-top" alt="Expert Craftsmanship">
             <div class="card-body">
               <h5 class="card-title">Expert Craftsmanship</h5>
@@ -357,7 +407,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="card mx-auto text-center " style="max-width: 320px;">
+          <div class="card card-1  mx-auto text-center " style="max-width: 320px;">
             <img src="./lifetime.png" class="card-img-top" alt="Lifetime Support">
             <div class="card-body">
               <h5 class="card-title">Lifetime Support</h5>
@@ -471,24 +521,33 @@
   </div>
   <!-- calculator end -->
   <!-- MARK: testimonials start -->
-  <div class="container my-5 text-center">
+  <div class="container  my-5 text-center">
     <div class="row">
       <div class="col">
-        <h3>What people say about us</h3>
+        <h2>What people say about us</h2>
       </div>
     </div>
-    <div class="row">
-      <div class="col-2 col-md-1 align-self-center">
-        <button class="btn " id="previousBTN">
-          &lt; </button>
+    <div class="test">
+      <!-- <div class="row justify-content-center"> -->
+      <!-- <div class="col-2 col-md-1 align-self-center"> -->
+      <button class="btn btn-outline-secondary" id="previousBTN">
+        &lt; </button>
+      <!-- </div> -->
+      <!-- <div class="col-auto align-self-center"> -->
+      <div class="card card-2" style="width: 100%;">
+        <div class="testimonialBox">
+          <img src="./person.jpg" class="card-img-top" id="testimonialImg">
+          <div class="card-body">
+            <h5 class="card-title" id="testimonialName"></h5>
+            <p class="card-text" id="testimonialText"></p>
+            <div class="text-warning mb-2" id="testimonialStars"></div>
+          </div>
+        </div>
       </div>
-      <div class="col">
-        <div class="testimonialBox"></div>
-      </div>
-      <div class="col-2 col-md-1 align-self-center">
-        <button class="btn" id="nextBTN">&gt;</button>
-      </div>
-      <!-- <div class="dotBox"></div> -->
+      <!-- </div> -->
+      <!-- <div class="col-2 col-md-1 align-self-center"> -->
+      <button class="btn btn-outline-secondary" id="nextBTN">&gt;</button>
+      <!-- </div> -->
     </div>
   </div>
   <!-- end testimonials -->
@@ -533,10 +592,56 @@
       </p>
     </div>
   </footer>
-  <!-- MARK: footer end -->
+  <!--  footer end -->
+  <!-- scroll top button start -->
   <button class="scrollTopBTN" id="scrollTopBTN">
     <i class="fa-solid fa-arrow-up "></i>
   </button>
+  <!-- scroll top button end -->
+  <!-- MARK: contact form popup start -->
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">
+    Launch demo modal
+  </button> -->
+  <!-- Button trigger modal -->
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="contactModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title"> contact form</h3>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <label for="contactName">Name</label>
+            </div>
+            <div class="col-auto">
+              <input type="text" name="contactName" id="contactName">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <label for="contactPhone">Phone Number</label>
+            </div>
+            <div class="col-auto">
+              <input type="number" name="contactPhone" id="contactPhone">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <label for="contactMail">Email</label>
+            </div>
+            <div class="col-auto">
+              <input type="email" name="contactMail" id="contactMail">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- contact form popup end -->
   <!-- MARK: Javascript -->
   <script>
     // MARK: JS
@@ -618,37 +723,44 @@
     // testimonials
     let testimonial = [
       {
-        name: "abc",
-        text: "lorem ipsumlorem ipsummlorem ipsumlorem ipsumlorem ipsum.",
-        rating: 1
+        name: "Eleanor V.",
+        text: "Absolutely stunning craftsmanship! I ordered the 14k gold diamond solitaire ring for my anniversary, and it looks even more brilliant in person. The packaging was incredibly luxurious and secure.",
+        rating: "★★★★★",
+        img: "./person1.jpg"
       },
       {
-        name: "def",
-        text: "dolor sitdolor sitdolor sitdolor sitdolor sitdolor sit.",
-        rating: 2
+        name: "Marcus T.",
+        text: "I was hesitant about buying fine jewelry online, but their customer support helped me verify the hallmark certification beforehand. Shipping was fast, and the stacking silver bands are my new everyday favorites.",
+        rating: "★★★★☆",
+        img: "./person2.jpg"
       },
       {
-        name: "er3",
-        text: "ametame tametamet ametametameta meta met ame t.",
-        rating: 3
+        name: "Sophia R.",
+        text: "Beautiful custom birthstone necklace. The design process was super smooth. Deducting one star only because delivery took two days longer than expected, but the quality completely made up for the delay.",
+        rating: "★★★☆☆",
+        img: "./person3.jpg"
       },
       {
-        name: "klf",
-        text: "lorem ipsum dolor sit amet.",
-        rating: 4
+        name: "Clara M.",
+        text: "I am in love with my new freshwater pearl earrings! They are incredibly elegant and comfortable enough to wear all day. Finding high-quality, hypoallergenic jewelry online can be tricky, but this shop nails it.",
+        rating: "★★☆☆☆",
+        img: "./person4.jpg"
       },
       {
-        name: "dw2",
-        text: "lorem ipsum dolor sit amet.",
-        rating: 5
+        name: "Julian K.",
+        text: "The customer service here is unmatched. I needed to resize a sapphire tennis bracelet I bought for my wife, and they handled the exchange flawlessly without any extra fees. Highly recommend this brand!",
+        rating: "★☆☆☆☆",
+        img: "./person5.jpg"
       }
     ]
-    let ttBox = document.querySelector(".testimonialBox")
     let testimonialIndex = 0
     printTestimonials(testimonialIndex)
     function printTestimonials(index) {
       let tmnl = testimonial[index];
-      ttBox.innerHTML = `<h5>${tmnl.name}</h5>` + `<p>${tmnl.text}</p>` + `<p>${tmnl.rating}/5</p>`
+      document.querySelector("#testimonialName").innerHTML = `${tmnl.name}`
+      document.querySelector("#testimonialText").innerHTML = `${tmnl.text}`
+      document.querySelector("#testimonialStars").innerHTML = `${tmnl.rating}`
+      document.querySelector("#testimonialImg").src = `${tmnl.img}`
     }
     // previous btn
     document.querySelector("#previousBTN").addEventListener("click", function () {
