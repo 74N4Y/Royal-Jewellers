@@ -27,7 +27,7 @@
       /* border: 1px solid red; */
       /* background-color: rgb(255, 0, 0, 0.1); */
     }
-     .card-1 {
+    .card-1 {
       background-color: rgba(255, 252, 178, 0.1);
       border-radius: 12px;
       transform: translateY(0);
@@ -55,14 +55,14 @@
     /* #calculator {
       border: 1px solid black;
       } */
-      /* huides number arrows in input box */
-      #weight::-webkit-outer-spin-button,
-      #weight::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-      }
+    /* huides number arrows in input box */
+    #weight::-webkit-outer-spin-button,
+    #weight::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
     /* testimonials */
-      .test {
-        position: relative;
+    .test {
+      position: relative;
       width: 18rem;
       margin: 0 auto;
     }
@@ -600,59 +600,75 @@
   <!-- scroll top button end -->
   <!-- MARK: contact form popup start -->
   <!-- Button trigger modal -->
-  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">
     Launch demo modal
-  </button> -->
+  </button>
   <!-- Button trigger modal -->
   <!-- Modal -->
-  <!-- <div class="modal fade" id="contactModal" tabindex="-1">
+  <div class="modal fade" id="contactModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title"> contact form</h3>
-          <button class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="modal-header d-block border-bottom-0 pb-0">
+          <div class="d-flex justify-content-start mb-2">
+            <button type="button" class="btn-close" id="closeContactBtn"></button>
+          </div>
+          <h5 class="modal-title w-100 text-center" id="contactModalLabel">Contact Details</h5>
+          <div id="submitSuccessText" class="text-center d-none">
+            <h5>
+              "Thank you! We'll call you back soon."
+            </h5>
+          </div>
         </div>
         <div class="modal-body">
-          <div class="row align-items-center">
-            <div class="col-auto">
-              <label for="contactName">Name</label>
+          <form id="contactForm">
+            <div class="mb-3">
+              <label for="contactName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="contactName" placeholder="Enter your name" required>
             </div>
-            <div class="col-auto">
-              <input type="text" name="contactName" id="contactName">
+            <div class="mb-3">
+              <label for="contactPhone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="contactPhone" placeholder="Enter your phone number" required>
             </div>
+            <div class="mb-3">
+              <label for="contactMail" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="contactMail" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="contactQueries" class="form-label">Your Queries / Message</label>
+              <textarea class="form-control" id="contactQueries" rows="4" placeholder="How can we help you?"></textarea>
+            </div>
+          </form>
+          <div id="submitSuccess" class="text-center d-none">
+            <h6>
+              "Thank you! We'll call you back soon."
+            </h6>
           </div>
-          <div class="row align-items-center">
-            <div class="col-auto">
-              <label for="contactPhone">Phone Number</label>
-            </div>
-            <div class="col-auto">
-              <input type="number" name="contactPhone" id="contactPhone">
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col-auto">
-              <label for="contactMail">Email</label>
-            </div>
-            <div class="col-auto">
-              <input type="email" name="contactMail" id="contactMail">
-            </div>
-          </div>
+        </div>
+        <div class="modal-footer" id="contactFooter">
+          <button type="submit" form="contactForm" class="btn btn-primary" id="contactSubmit">Request Call Back</button>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
   <!-- contact form popup end -->
   <!-- MARK: Javascript -->
   <script>
     // MARK: JS
-    // scroll button
+    // scroll button and contact popup
     let scroll = document.querySelector('#scrollTopBTN');
+    let contactModalInstance = new bootstrap.Modal(document.querySelector("#contactModal"));
+    let scrollToBottom = 0;
     window.addEventListener('scroll', function scrl() {
       if (window.scrollY > 300) {
         scroll.style.display = "block";
       }
       else {
         scroll.style.display = "none";
+      }
+      if (window.innerHeight + window.scrollY > document.body.scrollHeight - 100 && scrollToBottom == 0) {
+        console.log("You have reached the bottom of the page!");
+        contactModalInstance.show();
+        scrollToBottom = 1;
       }
     });
     scroll.addEventListener('click', function top() {
@@ -661,12 +677,33 @@
         behavior: "smooth"
       });
     });
+    document.querySelector("#closeContactBtn").addEventListener('click', function () {
+      contactModalInstance.hide();
+    })
+    document.querySelector("#contactForm").addEventListener('submit', function () {
+      event.preventDefault();
+      document.querySelector("#contactForm").classList.add("d-none");
+      document.querySelector("#contactModalLabel").classList.add("d-none");
+      document.querySelector("#closeContactBtn").classList.add("d-none");
+      document.querySelector("#contactFooter").classList.add("d-none");
+      document.querySelector("#submitSuccessText").classList.remove("d-none");
+      setTimeout(function () {
+        contactModalInstance.hide();
+      }, 1500)
+      setTimeout(function () {
+        document.querySelector("#contactForm").classList.remove("d-none");
+        document.querySelector("#contactModalLabel").classList.remove("d-none");
+        document.querySelector("#closeContactBtn").classList.remove("d-none");
+        document.querySelector("#contactFooter").classList.remove("d-none");
+        document.querySelector("#submitSuccessText").classList.add("d-none");
+      }, 2000)
+    });
     // calculator
     // prevent form submission
     document.querySelector("#calculator").addEventListener('submit', function (event) {
       event.preventDefault();
     });
-    // nested drowdown
+    // nested dropdown
     let metalSelect = document.querySelector("#metal")
     let puritySelect = document.querySelector("#purity")
     let purityOptions = puritySelect.querySelectorAll('option');
@@ -782,6 +819,7 @@
       }
       printTestimonials(testimonialIndex);
     })
+    
   </script>
 </body>
 </html>
